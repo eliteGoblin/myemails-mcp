@@ -19,7 +19,7 @@ Implementations: `gmail-api.ts` (googleapis), `gmail-imap.ts` (imapflow + nodema
 
 `{ id, threadId, account, from, to[], cc[], date (ISO), subject, snippet, body? }`. `body` is plain text; HTML is converted with `html-to-text`. `list` results omit `body`. IMAP ids are `FOLDER:UID`.
 
-## MCP tools (`src/tools.ts` handlers, `src/index.ts` wiring)
+## MCP tools (`src/tools.ts` handlers, `src/server.ts` schemas)
 
 | Tool | Input | Output |
 |---|---|---|
@@ -46,4 +46,4 @@ Tokens: `~/.config/myemails/tokens/<name>.json`, file mode 0600, directory 0700.
 
 ## File layout
 
-`src/index.ts` server, `src/tools.ts` handlers, `src/cli.ts` CLI, `src/config.ts` config and token store, `src/registry.ts` builds providers from config, `src/normalize.ts`, `src/providers/*`. Tests in `test/`.
+`src/index.ts` stdio entry, `src/server.ts` tool schemas, `src/tools.ts` handlers, `src/cli.ts` CLI, `src/config.ts` config and token store, `src/registry.ts` builds providers from config, `src/normalize.ts`, `src/providers/*`. Tests in `test/`.
