@@ -1,0 +1,46 @@
+{
+  "name": "myemails-mcp",
+  "version": "0.1.0",
+  "description": "MCP server giving Claude access to several Gmail and outlook.com accounts at once",
+  "type": "module",
+  "license": "MIT",
+  "author": "Frank Sun",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliteGoblin/myemails-mcp.git"
+  },
+  "bin": {
+    "myemails": "dist/cli.js",
+    "myemails-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "lint": "tsc --noEmit",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^7.2.1",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "googleapis": "^178.0.0",
+    "html-to-text": "^10.0.1",
+    "imapflow": "^2.11.0",
+    "mailparser": "^3.14.2",
+    "nodemailer": "^10.4.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/html-to-text": "^9.0.4",
+    "@types/mailparser": "^3.9.0",
+    "@types/node": "^26.6.6",
+    "@types/nodemailer": "^8.0.2",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.12"
+  }
+}
