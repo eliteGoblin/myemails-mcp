@@ -7,8 +7,8 @@ import { fromGmail } from "../normalize.js";
 import type { ListOptions, LoginIO, Message, Provider, SendInput } from "./types.js";
 
 export const GMAIL_SCOPES = [
-  "https://www.googleapis.com/auth/gmail.readonly",
-  "https://www.googleapis.com/auth/gmail.send",
+  "https://www.googleapis.com/auth/gmail.modify",
+  "https://www.googleapis.com/auth/calendar",
 ];
 
 const HEADERS = ["From", "To", "Cc", "Date", "Subject"];

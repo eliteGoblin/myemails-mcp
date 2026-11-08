@@ -40,8 +40,8 @@ Tokens: `~/.config/myemails/tokens/<name>.json`, file mode 0600, directory 0700.
 
 ## Auth flows (`myemails auth <account>`)
 
-- Outlook: MSAL device-code flow, public client. Scopes `Mail.Read Mail.Send offline_access User.Read`. The MSAL cache is saved to the token file. Later calls use `acquireTokenSilent`.
-- Gmail API: loopback server on `127.0.0.1:<random port>`, PKCE, browser opened. Scopes `gmail.readonly gmail.send`. The refresh token is saved.
+- Outlook: MSAL device-code flow, public client. Scopes `Mail.ReadWrite Mail.Send Calendars.ReadWrite User.Read offline_access` (calendar is requested now so phase 2 needs no re-consent). The MSAL cache is saved to the token file. Later calls use `acquireTokenSilent`.
+- Gmail API: loopback server on `127.0.0.1:<random port>`, PKCE, browser opened. Scopes `gmail.modify` and `calendar`. The refresh token is saved.
 - Gmail IMAP: prompts for an app password and saves it. Hosts `imap.gmail.com:993`, `smtp.gmail.com:465`.
 
 ## File layout

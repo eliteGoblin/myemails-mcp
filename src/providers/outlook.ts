@@ -3,7 +3,7 @@ import { loadToken, saveToken, type Account } from "../config.js";
 import { fromGraph, type GraphMessage } from "../normalize.js";
 import type { ListOptions, LoginIO, Message, Provider, SendInput } from "./types.js";
 
-export const OUTLOOK_SCOPES = ["Mail.Read", "Mail.Send", "offline_access", "User.Read"];
+export const OUTLOOK_SCOPES = ["Mail.ReadWrite", "Mail.Send", "Calendars.ReadWrite", "User.Read", "offline_access"];
 const GRAPH = "https://graph.microsoft.com/v1.0";
 const SELECT = "id,conversationId,subject,bodyPreview,receivedDateTime,from,toRecipients,ccRecipients";
 

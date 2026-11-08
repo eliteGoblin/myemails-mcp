@@ -56,7 +56,7 @@ myemails test hotmail     # lists the 5 newest messages
 1. Entra admin center (entra.microsoft.com) > Entra ID > App registrations > New registration.
 2. Supported account types: "Any Entra ID Tenant + Personal Microsoft accounts".
 3. After creating it, copy the Application (client) ID into `outlookClientId`. One app serves all accounts.
-4. API permissions > Add a permission > Microsoft Graph > Delegated: `Mail.Read`, `Mail.Send` (`offline_access` and `User.Read` are added by default).
+4. API permissions > Add a permission > Microsoft Graph > Delegated: `Mail.ReadWrite`, `Mail.Send`, `Calendars.ReadWrite`, `User.Read`, `offline_access`. Calendar is requested now so that calendar tools can be added later without a new consent.
 5. Authentication > Advanced settings > Allow public client flows: Yes.
 
 ## Gmail setup, API mode (Google Cloud OAuth client)
@@ -64,13 +64,13 @@ myemails test hotmail     # lists the 5 newest messages
 1. Google Cloud Console: create a project, then APIs & Services > Library > enable Gmail API.
 2. OAuth consent screen: User type External, publishing status Testing. Add every Gmail address you will use as a test user.
 3. Credentials > Create credentials > OAuth client ID > Application type Desktop app. Put the client ID and secret in `googleClientId` and `googleClientSecret`.
-4. Scopes used: `gmail.readonly` and `gmail.send`.
+4. OAuth consent screen > Scopes: add `https://www.googleapis.com/auth/gmail.modify` (read, labels, trash, send; no permanent delete) and `https://www.googleapis.com/auth/calendar`. Calendar is requested now so that calendar tools can be added later without a new consent.
 
 In Testing mode Google expires the refresh token after 7 days. Run `myemails auth <account>` again when `needs login` returns. Publishing the app to production removes the limit, but Google may then ask for app verification for these sensitive scopes.
 
 ## Gmail setup, app password (no Google Cloud project)
 
-Turn on 2-Step Verification, create an app password at https://myaccount.google.com/apppasswords, set `"mode": "imap"` on the account, and run `myemails auth <account>`. Search uses Gmail's `X-GM-RAW`, so Gmail search syntax works.
+Turn on 2-Step Verification, create an app password at https://myaccount.google.com/apppasswords, set `"mode": "imap"` on the account, and run `myemails auth <account>`. Calendar is not available in IMAP mode (mail only). Search uses Gmail's `X-GM-RAW`, so Gmail search syntax works.
 
 ## Security notes
 
